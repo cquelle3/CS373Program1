@@ -70,30 +70,30 @@ int main(int argc, char *argv[]) {
     
     bool accept = false;
     bool reject = false;
-    bool quit = false;
-    
+    //bool quit = false;
+
     while(true){
         
-        for(int i = 0; i < accept_state.size(); i++){
+        for(int i = 0; i < int(accept_state.size()); i++){
             if(current_state == accept_state[i]){
                 accept = true;
                 break;
             }
         }
-        for(int i = 0; i < reject_state.size(); i++){
+        for(int i = 0; i < int(reject_state.size()); i++){
             if(current_state == reject_state[i]){
                 reject = true;
                 break;
             }
         }
         if(num_transitions >= max_transitions){
-            quit = true;
+            //quit = true;
             break;
         }
         
         if(reject || accept == true) break;
         
-        for(int i = 0; i < transitions[current_state].size(); i++){
+        for(int i = 0; i < int(transitions[current_state].size()); i++){
             if(get<1>(transitions[current_state][i]) == word[word_index]){
                 
                 word[word_index] = get<3>(transitions[current_state][i]);
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
     
     path_taken.push_back(current_state);
     
-    for(int i = 0; i < path_taken.size()-1; i++){
+    for(int i = 0; i < int(path_taken.size()-1); i++){
         cout << path_taken[i] << "->";
     }
     cout << path_taken[path_taken.size()-1] << " ";
